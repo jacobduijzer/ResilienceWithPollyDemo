@@ -1,0 +1,14 @@
+@startuml Context
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+System_Boundary(c1, "Sample System") {
+    System(worker, "Worker", ".NET 6 Worker. Retrieves and processes extra animal information from an external service", "")
+}
+
+System_Ext(api, "External Animal Information Api")
+
+Rel_Right(worker, api, "Requesting animal details")
+
+
+@enduml

@@ -9,7 +9,7 @@ No rate limit, no faults.
 
 ### Simple retry policy, retry forever
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMYBWR2GJ5CMGBAP4XMYP2RJ5A)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMYNS3TQ3J4M5RFNURWYP2RMRQ)
 
 ### Simple retry policy, retry 3 times, otherwise throw
 

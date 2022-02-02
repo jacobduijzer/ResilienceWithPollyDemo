@@ -1,0 +1,15 @@
+@startuml
+start
+
+repeat :Get animal details;
+backward:Retry;
+repeat while (Non-successful request & count < 3)
+->no;
+if(> 3 non successful requests) then (yes)
+	#palegreen:Handle fallback scenario;
+	kill
+endif 
+->no;
+:Print animal details;
+stop
+@enduml

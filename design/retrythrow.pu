@@ -1,0 +1,18 @@
+@startuml
+
+@startuml
+start
+
+repeat :Get animal details;
+backward:Retry;
+repeat while (Non-successful request & count < 3)
+->no;
+if(> 3 non successful requests) then
+	#pink:throw exception;
+	kill
+endif 
+:Print animal details;
+stop
+@enduml
+
+@enduml

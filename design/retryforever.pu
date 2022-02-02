@@ -1,0 +1,17 @@
+@startuml
+
+:Get animal details;
+if (Exception received) then
+  while (loop forever)
+   :Step 2;
+  endwhile
+  -[hidden]->
+  detach
+else
+  :Print animal details;
+  stop
+endif
+@enduml
+
+
+

@@ -29,17 +29,24 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
         logger.LogInformation($"Animal details for animal {animalDetails.AnimalId} => Name: {animalDetails.Name}, Date of Birth: {animalDetails.DateOfBirth}");
     };
 
-    Func<Task> fallback = async () => { logger.LogInformation($"Handling fallback for animal {fakeAnimalId}"); };
+    Func<Task> fallback = async () =>
+    {
+        logger.LogInformation($"Handling fallback for animal {fakeAnimalId}");
+        // store to local json file for later processing
+    };
 
     try
     {
         // 1 => no policies, ok when API is healthy, losing data when API is faulty
-        await apiCall.Invoke().ConfigureAwait(false);
+        // await apiCall.Invoke().ConfigureAwait(false);
 
         // 2 => simple retry policy, retry forever
         // await retryService
         //     .RetryForever(apiCall: apiCall, waitTimeBetweenRetries: TimeSpan.FromSeconds(3))
         //     .ConfigureAwait(false);
+        
+        // 2a =>? retry 3 times. throw
+        // await retryService.Retry(apiCall, 3, TimeSpan.FromSeconds(3)).ConfigureAwait(false);
 
         // 3 => retry with fallback
         // await retryService.RetryWithFallBack(
@@ -48,9 +55,9 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
         //         numberOfRetries: 3,
         //         TimeSpan.FromSeconds(3))
         //     .ConfigureAwait(false);
-        
+
         // 4 => retry with circuit breaker
-        // await retryService.WaitAndRetryWithCircuitBreaker(apiCall, 3, TimeSpan.FromSeconds(3));
+        await retryService.WaitAndRetryWithCircuitBreaker(apiCall, 3, TimeSpan.FromSeconds(3));
     }
     catch (Exception exception)
     {

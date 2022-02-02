@@ -17,8 +17,9 @@ public class RetryService
     {
         _logger = logger;
 
-        _circuitBreakerPolicy = Policy.Handle<Exception>()
-        .CircuitBreakerAsync(1, TimeSpan.FromMinutes(1),
+        _circuitBreakerPolicy = Policy
+            .Handle<Exception>()
+            .CircuitBreakerAsync(ExceptionsAllowedBeforeBreakingCircuit, TimeSpan.FromSeconds(CircuitBreakingTimeInSeconds),
         (ex, t) => logger.LogInformation("Circuit broken!"),
         () => logger.LogInformation("Circuit reset!"));
     }
@@ -36,8 +37,13 @@ public class RetryService
 
     public async Task Retry(Func<Task> apiCall, int numberOfRetries, TimeSpan waitTimeBetweenRetries) =>
         await Policy
-            .Handle<Exception>()
-            .RetryAsync(numberOfRetries, (exception, retryCount, context) => _logger.LogInformation($"Retry {retryCount}/{numberOfRetries}, exception: {exception.Message}"))
+            .Handle<UnauthorizedAccessException>()
+            .RetryAsync(numberOfRetries,
+                (exception, retryCount, context) =>
+                {
+                    _logger.LogInformation($"Retry {retryCount}/{numberOfRetries}, exception: {exception.Message}");
+                    // DO SOME AUTHORIZATION CALL HERE
+                })
             .ExecuteAsync(apiCall)
             .ConfigureAwait(false);
 
@@ -67,26 +73,18 @@ public class RetryService
 
     public async Task WaitAndRetryWithCircuitBreaker(Func<Task> apiCall, int numberOfRetries, TimeSpan waitTimeBetweenRetries)
     {
+        var brokenPolicy = Policy
+            .Handle<BrokenCircuitException>()
+            .WaitAndRetryAsync(3, i => TimeSpan.FromSeconds(CircuitBreakingTimeInSeconds));
+            
         var retryPolicy = Policy
             .Handle<Exception>()
             .WaitAndRetryAsync(
                 numberOfRetries,
-                retryAttempt => waitTimeBetweenRetries,
+                retryAttempt => TimeSpan.FromMilliseconds(300),
                 (exception, timeSpan, retryCount, context) =>
                     _logger.LogInformation($"Wait and retry ({retryCount}/{numberOfRetries}: {exception.Message}"));
-        
-        // var circuitBreakerPolicy = Policy
-        // .Handle<BrokenCircuitException>()
-        // .WaitAndRetryAsync(
-        //     numberOfRetries,
-        //     retryAttept => TimeSpan.FromSeconds(CircuitBreakingTimeInSeconds),
-        //     (exception, timeSpan, retryCount, context) =>
-        //         _logger.LogInformation($"Wait and retry ({retryCount}/{numberOfRetries}: {exception.Message}")
-        // );
-        
-        // var circuitPolicy = CreateCircuitBreakerPolicy(numberOfRetries, waitTime);
     
-        await retryPolicy.WrapAsync(_circuitBreakerPolicy).ExecuteAsync(apiCall);
-        // await _circuitBreakerPolicy.WrapAsync(retryPolicy).ExecuteAsync(apiCall).ConfigureAwait(false);
+        await brokenPolicy.WrapAsync(retryPolicy).WrapAsync(_circuitBreakerPolicy).ExecuteAsync(apiCall);
     }
 }

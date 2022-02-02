@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  buggyapi:
+    image: buggyapi
+    ports:
+      - 80:5000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_URLS: http://+:5000
+      FeatureFlags:EnableFaultyApi: ${EnableFaultyApi}
+      FeatureFlags:EnableRateLimit: ${EnableRateLimit}
+      FeatureFlags:EnableCoolingDown: ${EnableCoolingDown}
+    restart: always

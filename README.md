@@ -1,6 +1,6 @@
 # Polly
 
-![alternative text](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ChickenFarmWithDapr/main/documentation/container_diagram.pu)
+![Context](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/context.pu?token=GHSAT0AAAAAABNV6QMYWQQQ3ISBNNR27G7WYP2QPIQ)
 
 ## Ordinary API
 No rate limit, no faults.

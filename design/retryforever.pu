@@ -1,17 +1,11 @@
 @startuml
 
-:Get animal details;
-if (Exception received) then
-  while (loop forever)
-   :Step 2;
-  endwhile
-  -[hidden]->
-  detach
-else
-  :Print animal details;
-  stop
-endif
+start
+repeat
+	:Get animal details;
+repeat while (exception received?) is (yes)
+->no;
+:Print animal details;
+stop
+
 @enduml
-
-
-

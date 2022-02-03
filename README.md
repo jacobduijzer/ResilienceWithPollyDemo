@@ -45,4 +45,4 @@ No rate limit, no faults.
 ![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMY5ABL5GQNL5AFZWSQYP4F27A)
 
 ### What does the retry policy look like:
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=)
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMYOHMSWOT5ZU5D2XKOYP4GNOA)

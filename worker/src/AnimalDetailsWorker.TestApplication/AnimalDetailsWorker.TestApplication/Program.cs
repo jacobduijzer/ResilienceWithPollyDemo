@@ -2,8 +2,11 @@
 using Microsoft.Extensions.Logging;
 using Refit;
 
-const int retryCount = 6;
-const int millisecondsToWaitBetweenExceptions = 500;
+// ================ settings ==========================
+const int numberOfRequests = 1000;
+const int numberOfRetries = 3;
+const int secondsBetweenRetry = 3;
+// ====================================================
 
 Console.WriteLine("Getting animal details from external API");
 
@@ -20,7 +23,7 @@ var logger = loggerFactory.CreateLogger<Program>();
 var api = RestService.For<IAnimalDetailsApi>("http://localhost");
 var retryService = new RetryService(loggerFactory.CreateLogger<RetryService>());
 
-const int numberOfRequests = 1000;
+
 foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
 {
     Func<Task> apiCall = async () =>
@@ -28,11 +31,12 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
         var animalDetails = await api.GetAnimalDetails(fakeAnimalId);
         logger.LogInformation($"Animal details for animal {animalDetails.AnimalId} => Name: {animalDetails.Name}, Date of Birth: {animalDetails.DateOfBirth}");
     };
-
-    Func<Task> fallback = async () =>
+    
+    Func<Task> fallbackCall = async () =>
     {
         logger.LogInformation($"Handling fallback for animal {fakeAnimalId}");
-        // store to local json file for later processing
+        await using var sw = File.AppendText("faillog.txt");
+        sw.WriteLine($"Animal {fakeAnimalId} failed");
     };
 
     try
@@ -42,22 +46,22 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
 
         // 2 => simple retry policy, retry forever
         // await retryService
-        //     .RetryForever(apiCall: apiCall, waitTimeBetweenRetries: TimeSpan.FromSeconds(3))
+        //     .RetryForever(apiCall: apiCall, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry))
         //     .ConfigureAwait(false);
         
         // 2a =>? retry 3 times. throw
-        // await retryService.Retry(apiCall, 3, TimeSpan.FromSeconds(3)).ConfigureAwait(false);
+        // await retryService.Retry(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry)).ConfigureAwait(false);
 
         // 3 => retry with fallback
         // await retryService.RetryWithFallBack(
         //         apiCall: apiCall,
-        //         fallback: fallback,
-        //         numberOfRetries: 3,
-        //         TimeSpan.FromSeconds(3))
+        //         fallback: fallbackCall,
+        //         numberOfRetries: numberOfRetries,
+        //         waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry))
         //     .ConfigureAwait(false);
 
         // 4 => retry with circuit breaker
-        await retryService.WaitAndRetryWithCircuitBreaker(apiCall, 3, TimeSpan.FromSeconds(3));
+        // await retryService.WaitAndRetryWithCircuitBreaker(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry));
     }
     catch (Exception exception)
     {

@@ -1,0 +1,20 @@
+@startuml
+
+start
+
+:Incoming request;
+if (limit reached?) then (yes)
+	if (Requested before?) then (yes)
+		:Add time to wait time\n(e.g. add 30 sec);
+	else (no)
+		:Set wait time\n(e.g. 30 sec);
+	endif
+	:Return "429 Too Many Requests";
+	stop
+endif
+->no;
+:Number of requests + 1;
+:Return requested data;
+stop
+
+@enduml

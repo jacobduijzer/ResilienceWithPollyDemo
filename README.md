@@ -39,3 +39,7 @@ No rate limit, no faults.
 
 ## Crashing API (Rate limited API with grace period, sliding window)
 * Policy with fallback, save to disk as failed, ready to retry later
+
+### What does the logic of the API look like:
+
+![API Logic]()

@@ -42,4 +42,5 @@ No rate limit, no faults.
 
 ### What does the logic of the API look like:
 
-![API Logic]()
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMY5ABL5GQNL5AFZWSQYP4F27A)
+

@@ -38,9 +38,11 @@ No rate limit, no faults.
 ### Policy with circuit breaker: succeeds
 
 ## Crashing API (Rate limited API with grace period, sliding window)
-* Policy with fallback, save to disk as failed, ready to retry later
+* Policy with retry and circuit breaker
 
 ### What does the logic of the API look like:
 
 ![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMY5ABL5GQNL5AFZWSQYP4F27A)
 
+### What does the retry policy look like:
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=)

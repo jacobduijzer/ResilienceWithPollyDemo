@@ -1,0 +1,16 @@
+@startuml
+
+start
+
+:Request data;
+
+if(Request unsuccessful) then (yes)
+endif
+->no;
+
+:Print animal details;
+
+stop
+
+@enduml
+

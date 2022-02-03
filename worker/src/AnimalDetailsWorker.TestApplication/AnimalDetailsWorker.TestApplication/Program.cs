@@ -61,7 +61,7 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
         //     .ConfigureAwait(false);
 
         // 4 => retry with circuit breaker
-        // await retryService.WaitAndRetryWithCircuitBreaker(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry));
+        await retryService.WaitAndRetryWithCircuitBreaker(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry));
     }
     catch (Exception exception)
     {

@@ -1,15 +1,23 @@
 @startuml
 
 start
+repeat 
+repeat :Get animal details;
+' if(Request unsuccessful?) then (yes)
 
-:Request data;
+' endif
+repeat while (Non-successful request\nand less than 3 tries)
 
-if(Request unsuccessful) then (yes)
+if (Still not successful?) then (yes)
+:Break the circuit;
+:Wait for the circuit to open;
+else (no, data received)
+	:Print animal details;
+	stop
 endif
-->no;
-
-:Print animal details;
-
+repeat while (Circuit broke 3 times?)
+->yes;
+:Exception or fallback,\nsomething is really wrong;
 stop
 
 @enduml

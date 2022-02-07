@@ -13,7 +13,7 @@ No rate limit, no faults.
 
 ### Simple retry policy, retry 3 times, otherwise throw
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYLOD3BPYVNCBXNCOSYP2RKRA&cache=no)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYNI2UTKUWQRR7I2H2YQAYELA)
 
 ## Rate limited API
 

@@ -1,6 +1,6 @@
 # Polly
 
-![Context](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/context.pu?token=GHSAT0AAAAAABNV6QMYWQQQ3ISBNNR27G7WYP2QPIQ)
+![Context](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/context.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ## Ordinary API
 No rate limit, no faults.
@@ -9,31 +9,31 @@ No rate limit, no faults.
 
 ### Simple retry policy, retry forever
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZAE6JLBWK5ROJQFECYQAYIQA)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ### Simple retry policy, retry 3 times, otherwise throw
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYWBKB7Q2PULYCTZPAYQAYJFA)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ## Rate limited API
 
 ### Simple retry policy, retry forever
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZAE6JLBWK5ROJQFECYQAYIQA)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ### Retry 3 times, go to alternative fallback flow
 
-![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMYOL74JW2RPE6ZYR46YQAYJWA)
+![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ## Rate limited API with grace period, sliding window
 
 ### Simple retry policy, retry forever : never recovers
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZAE6JLBWK5ROJQFECYQAYIQA)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ### Retry x times, crashes
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYWBKB7Q2PULYCTZPAYQAYJFA)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ### Policy with circuit breaker: succeeds
 
@@ -42,7 +42,7 @@ No rate limit, no faults.
 
 ### What does the logic of the API look like:
 
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMZFBKLCYHJXOYBEILQYQAYKEQ)
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
 
 ### What does the retry policy look like:
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMYTV3FYTOX3YM2TJESYQAYKNQ)
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)

@@ -23,7 +23,7 @@ No rate limit, no faults.
 
 ### Retry 3 times, go to alternative fallback flow
 
-![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
+![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZR6T7JNTW5JDD5WLUYQAZWSA)
 
 ## Rate limited API with grace period, sliding window
 

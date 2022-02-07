@@ -1,5 +1,8 @@
 @startuml
 
+!theme sandstone
+
+
 start
 repeat 
 repeat :Get animal details;

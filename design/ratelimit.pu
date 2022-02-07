@@ -1,9 +1,11 @@
 @startuml
 
+!theme sandstone
+
 start
 
 :Incoming request;
-if (limit reached?) then (yes)
+if (Request limit reached?) then (yes)
 	if (Requested before?) then (yes)
 		:Add time to wait time\n(e.g. add 30 sec);
 	else (no)

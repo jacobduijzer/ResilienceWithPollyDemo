@@ -1,6 +1,12 @@
+
+<<<<<<< HEAD
+!theme sandstone
+=======
 @startuml
 
-!theme sandstone
+!theme amiga
+
+>>>>>>> 8c53519ab0ac279337394a8dd7b1272980a8268d
 start
 
 repeat :Get animal details;

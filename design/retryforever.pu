@@ -1,5 +1,7 @@
 @startuml
 
+!theme spacelab
+
 start
 repeat
 	:Get animal details;

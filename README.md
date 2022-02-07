@@ -9,11 +9,11 @@ No rate limit, no faults.
 
 ### Simple retry policy, retry forever
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMYNS3TQ3J4M5RFNURWYP2RMRQ)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMYD5CHSBO3CJABZG24YQAYF5Q)
 
 ### Simple retry policy, retry 3 times, otherwise throw
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYLOD3BPYVNCBXNCOSYP2RKRA&cache=no)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYNI2UTKUWQRR7I2H2YQAYELA)
 
 ## Rate limited API
 
@@ -33,7 +33,7 @@ No rate limit, no faults.
 
 ### Retry x times, crashes
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYYS7S4DQHLYKFQPRAYQAYCNQ)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYNI2UTKUWQRR7I2H2YQAYELA)
 
 ### Policy with circuit breaker: succeeds
 

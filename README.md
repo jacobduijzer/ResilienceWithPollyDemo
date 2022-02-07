@@ -33,7 +33,7 @@ No rate limit, no faults.
 
 ### Retry x times, crashes
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYYS7S4DQHLYKFQPRAYQAYCNQ)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYNI2UTKUWQRR7I2H2YQAYELA)
 
 ### Policy with circuit breaker: succeeds
 

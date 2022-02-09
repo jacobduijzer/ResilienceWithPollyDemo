@@ -25,7 +25,7 @@ No rate limit, no faults.
 
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to true
-3. Start the api again (`docker-compose up')
+3. Start the api again: `docker-compose up`
 
 ### Simple retry policy, retry forever
 
@@ -44,7 +44,7 @@ No rate limit, no faults.
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to false
 3. Set the feature flag for EnableRateLimit to true
-4. Start the api again (`docker-compose up')
+4. Start the api again: `docker-compose up`
 
 ### What does the logic of the API look like:
 
@@ -63,13 +63,29 @@ No rate limit, no faults.
 
 ## 4. Rate limited API with grace period, sliding window
 
+1. Stop the buggy api
+2. Set the feature flag for EnableFaultyApi to false
+3. Set the feature flag for EnableRateLimit to true
+4. Set the feature flag for EnableCoolingDown to true
+5. Start the api again: `docker-compose up`
+
+### What does the logic of the API look like:
+
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu)
+
+### What does the retry policy look like:
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu)
+
+
 ### Simple retry policy, retry forever : never recovers
 
-![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
+![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu)
 
 ### Retry x times, crashes
 
-![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYVDN6ZX6PDGYEWELSYQAZV4Q)
+![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu)
 
 ### Policy with circuit breaker: succeeds
+
+TODO
 

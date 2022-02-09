@@ -2,6 +2,14 @@
 
 ![Context](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/context.pu?token=GHSAT0AAAAAABNV6QMYF2TBW777YWLEET2YYQAZVOA)
 
+## Getting Started
+
+To test the code and the policies start the `Buggy API` in the `externalapi` folder:
+
+``` docker
+docker-compose up
+```
+
 ## 1. Ordinary API
 No rate limit, no faults.
 

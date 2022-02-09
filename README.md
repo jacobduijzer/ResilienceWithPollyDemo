@@ -25,7 +25,7 @@ No rate limit, no faults.
 
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to true
-3. Start the api again (`docker-compose up')
+3. Start the api again (`docker-compose up`)
 
 ### Simple retry policy, retry forever
 
@@ -35,20 +35,16 @@ No rate limit, no faults.
 
 ![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYVDN6ZX6PDGYEWELSYQAZV4Q)
 
-<<<<<<< HEAD
 ### Retry 3 times, go to alternative fallback flow
 
 ![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZVWIJ5CRE3JGGRHTWYP2ROVQ)
-:w
 
-## Rate limited API
-=======
 ## 3. Rate limited API
 
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to false
 3. Set the feature flag for EnableRateLimit to true
-4. Start the api again (`docker-compose up')
+4. Start the api again (`docker-compose up`)
 
 ### Simple retry policy, retry forever
 

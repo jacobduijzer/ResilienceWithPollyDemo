@@ -46,13 +46,6 @@ No rate limit, no faults.
 3. Set the feature flag for EnableRateLimit to true
 4. Start the api again: `docker-compose up`
 
-### What does the logic of the API look like:
-
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMYO43FJTR6B5O6GW5CYQAZXGQ)
-
-### What does the retry policy look like:
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMZIPZOG56BZGP2NEG4YQAZXSA)
-
 ### Simple retry policy, retry forever
 
 ![Retry forever](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryforever.pu?token=GHSAT0AAAAAABNV6QMZZWJ35WVQXWC7CHL6YQAZUEA)
@@ -73,9 +66,6 @@ No rate limit, no faults.
 
 ![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu)
 
-### What does the retry policy look like:
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu)
-
 
 ### Simple retry policy, retry forever : never recovers
 
@@ -87,5 +77,6 @@ No rate limit, no faults.
 
 ### Policy with circuit breaker: succeeds
 
-TODO
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu)
+
 

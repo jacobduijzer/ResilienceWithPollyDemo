@@ -25,7 +25,7 @@ No rate limit, no faults.
 
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to true
-3. Start the api again (`docker-compose up`)
+3. Start the api again: `docker-compose up`
 
 ### Simple retry policy, retry forever
 
@@ -44,7 +44,7 @@ No rate limit, no faults.
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to false
 3. Set the feature flag for EnableRateLimit to true
-4. Start the api again (`docker-compose up`)
+4. Start the api again: `docker-compose up`
 
 ### Simple retry policy, retry forever
 

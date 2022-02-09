@@ -2,10 +2,10 @@
 
 ![Context](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/context.pu?token=GHSAT0AAAAAABNV6QMYF2TBW777YWLEET2YYQAZVOA)
 
-## Ordinary API
+## 1. Ordinary API
 No rate limit, no faults.
 
-## Faulty API (Random errors every 0..x requests)
+## 2. Faulty API (Random errors every 0..x requests)
 
 ### Simple retry policy, retry forever
 
@@ -15,7 +15,7 @@ No rate limit, no faults.
 
 ![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYVDN6ZX6PDGYEWELSYQAZV4Q)
 
-## Rate limited API
+## 3. Rate limited API
 
 ### Simple retry policy, retry forever
 
@@ -25,7 +25,7 @@ No rate limit, no faults.
 
 ![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZR6T7JNTW5JDD5WLUYQAZWSA)
 
-## Rate limited API with grace period, sliding window
+## 4. Rate limited API with grace period, sliding window
 
 ### Simple retry policy, retry forever : never recovers
 

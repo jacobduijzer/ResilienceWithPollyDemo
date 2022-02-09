@@ -15,6 +15,11 @@ No rate limit, no faults.
 
 ![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYNI2UTKUWQRR7I2H2YQAYELA)
 
+### Retry 3 times, go to alternative fallback flow
+
+![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZVWIJ5CRE3JGGRHTWYP2ROVQ)
+:w
+
 ## Rate limited API
 
 ### Simple retry policy, retry forever

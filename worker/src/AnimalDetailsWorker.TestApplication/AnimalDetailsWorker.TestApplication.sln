@@ -5,6 +5,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C950579B-BC3C-4572-AE5C-6DC3EC79998B}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\README.md = ..\..\..\README.md
+		..\..\..\design\circuitbreaker.pu = ..\..\..\design\circuitbreaker.pu
+		..\..\..\design\context.pu = ..\..\..\design\context.pu
+		..\..\..\design\ratelimit.pu = ..\..\..\design\ratelimit.pu
+		..\..\..\design\retryfallback.pu = ..\..\..\design\retryfallback.pu
+		..\..\..\design\retryforever.pu = ..\..\..\design\retryforever.pu
+		..\..\..\design\retrythrow.pu = ..\..\..\design\retrythrow.pu
 	EndProjectSection
 EndProject
 Global

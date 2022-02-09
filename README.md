@@ -10,10 +10,22 @@ To test the code and the policies start the `Buggy API` in the `externalapi` fol
 docker-compose up
 ```
 
+Make sure all `feature flags` are turned off in the `.env` file:
+
+```
+EnableFaultyApi: false
+EnableRateLimit: false
+EnableCoolingDown: false
+```
+
 ## 1. Ordinary API
 No rate limit, no faults.
 
 ## 2. Faulty API (Random errors every 0..x requests)
+
+1. Stop the buggy api
+2. Set the feature flag for EnableFaultyApi to true
+3. Start the api again (`docker-compose up')
 
 ### Simple retry policy, retry forever
 
@@ -24,6 +36,11 @@ No rate limit, no faults.
 ![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYVDN6ZX6PDGYEWELSYQAZV4Q)
 
 ## 3. Rate limited API
+
+1. Stop the buggy api
+2. Set the feature flag for EnableFaultyApi to false
+3. Set the feature flag for EnableRateLimit to true
+4. Start the api again (`docker-compose up')
 
 ### Simple retry policy, retry forever
 

@@ -35,20 +35,23 @@ No rate limit, no faults.
 
 ![Retry throw](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retrythrow.pu?token=GHSAT0AAAAAABNV6QMYVDN6ZX6PDGYEWELSYQAZV4Q)
 
-<<<<<<< HEAD
 ### Retry 3 times, go to alternative fallback flow
 
 ![Fallback](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/retryfallback.pu?token=GHSAT0AAAAAABNV6QMZVWIJ5CRE3JGGRHTWYP2ROVQ)
-:w
 
-## Rate limited API
-=======
 ## 3. Rate limited API
 
 1. Stop the buggy api
 2. Set the feature flag for EnableFaultyApi to false
 3. Set the feature flag for EnableRateLimit to true
 4. Start the api again (`docker-compose up')
+
+### What does the logic of the API look like:
+
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMYO43FJTR6B5O6GW5CYQAZXGQ)
+
+### What does the retry policy look like:
+![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMZIPZOG56BZGP2NEG4YQAZXSA)
 
 ### Simple retry policy, retry forever
 
@@ -70,12 +73,3 @@ No rate limit, no faults.
 
 ### Policy with circuit breaker: succeeds
 
-## Crashing API (Rate limited API with grace period, sliding window)
-* Policy with retry and circuit breaker
-
-### What does the logic of the API look like:
-
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/ratelimit.pu?token=GHSAT0AAAAAABNV6QMYO43FJTR6B5O6GW5CYQAZXGQ)
-
-### What does the retry policy look like:
-![API Logic](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/jacobduijzer/ResilienceWithPollyDemo/main/design/circuitbreaker.pu?token=GHSAT0AAAAAABNV6QMZIPZOG56BZGP2NEG4YQAZXSA)

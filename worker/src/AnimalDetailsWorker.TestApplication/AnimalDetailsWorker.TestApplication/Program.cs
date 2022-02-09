@@ -34,6 +34,7 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
     
     Func<Task> fallbackCall = async () =>
     {
+        // SOME SILLY FAKE FALLBACK ACTION HERE
         logger.LogInformation($"Handling fallback for animal {fakeAnimalId}");
         await using var sw = File.AppendText("faillog.txt");
         sw.WriteLine($"Animal {fakeAnimalId} failed");
@@ -53,15 +54,15 @@ foreach (var fakeAnimalId in Enumerable.Range(0, numberOfRequests))
         // await retryService.Retry(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry)).ConfigureAwait(false);
 
         // 3 => retry with fallback
-        await retryService.RetryWithFallBack(
-                apiCall: apiCall,
-                fallback: fallbackCall,
-                numberOfRetries: numberOfRetries,
-                waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry))
-            .ConfigureAwait(false);
+        // await retryService.RetryWithFallBack(
+        //         apiCall: apiCall,
+        //         fallback: fallbackCall,
+        //         numberOfRetries: numberOfRetries,
+        //         waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry))
+        //     .ConfigureAwait(false);
 
         // 4 => retry with circuit breaker
-        // await retryService.WaitAndRetryWithCircuitBreaker(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry));
+        await retryService.WaitAndRetryWithCircuitBreaker(apiCall: apiCall, numberOfRetries: numberOfRetries, waitTimeBetweenRetries: TimeSpan.FromSeconds(secondsBetweenRetry));
     }
     catch (Exception exception)
     {
